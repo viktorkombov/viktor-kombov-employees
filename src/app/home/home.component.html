@@ -1,0 +1,39 @@
+
+
+
+<div class="home_content-wrapper">
+
+  <h2>Employees</h2>
+  <p>Import a CSV file with employees to find out which pair of them have worked together on common projects for the longest period of time.</p>
+
+  <div class="home_upload-button-wrapper">
+    <button (click)="fileUpload.click()">Import from csv</button>
+  </div>
+
+  <table class="home_data-grid" *ngIf="bestPair?.firstEmployeeId">
+      <tr>
+        <th>Employee ID #1</th>
+        <th>Employee ID #2</th>
+        <th>Project ID</th>
+        <th>Days worked</th>
+      </tr>
+
+      <tr>
+        <td>{{bestPair.firstEmployeeId}}</td>
+        <td>{{bestPair.secondEmployeeId}}</td>
+        <td>{{bestPair.projectId}}</td>
+        <td>{{bestPair.daysWorked}}</td>
+      </tr>
+  </table>
+</div>
+
+
+<!-- hidden input for uploading the file -->
+<input
+  #fileUpload
+  [accept]="'.csv'"
+  type="file"
+  class="file-input"
+  (change)="importFromCsv($event)"
+  hidden="true"
+/>
